@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="5dp"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp">
+
+    <LinearLayout
+        android:id="@+id/greendao_buttons_LL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/greendao_add_BN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            style="@style/MainSimpleButton"/>
+        <Button
+            android:id="@+id/greendao_delete_BN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            style="@style/MainSimpleButton"/>
+        <Button
+            android:id="@+id/greendao_query_BN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Query"
+            style="@style/MainSimpleButton"/>
+        <Button
+            android:id="@+id/greendao_update_BN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            style="@style/MainSimpleButton"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/greendao_content_TV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/greendao_buttons_LL"/>
+
+</RelativeLayout>
