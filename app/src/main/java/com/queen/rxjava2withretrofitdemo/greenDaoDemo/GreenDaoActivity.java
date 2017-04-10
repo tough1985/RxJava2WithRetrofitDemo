@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import com.queen.rxjava2withretrofitdemo.App;
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.entity.User;
+import com.queen.rxjava2withretrofitdemo.dao.UserDao;
+import com.queen.rxjava2withretrofitdemo.greenDaoEntity.User;
 
 import java.util.List;
 

@@ -37,4 +37,11 @@
         android:text="Simple GreenDao"
         style="@style/MainSimpleButton"/>
 
+    <Button
+        android:id="@+id/main_greendao_douban_BN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Simple GreenDao Douban"
+        style="@style/MainSimpleButton"/>
+
 </LinearLayout>

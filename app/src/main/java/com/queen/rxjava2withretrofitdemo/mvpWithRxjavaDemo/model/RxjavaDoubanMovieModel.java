@@ -70,7 +70,6 @@ public class RxjavaDoubanMovieModel {
                 HttpResultFunc<DoubanMovieResult>());
 
         makeSubscribe(observable, observer);
-
     }
 
     public void getMovieDetail(String movieId, Observer<DoubanMovieDetail> observer){

@@ -25,6 +25,7 @@
         <activity android:name=".mvpDemo.activity.DoubanMovieActivity"/>
         <activity android:name=".mvpWithRxjavaDemo.activity.RxDoubanMovieActivity"/>
         <activity android:name=".greenDaoDemo.GreenDaoActivity"/>
+        <activity android:name=".greenDaoDemo.GreenDaoDoubanActivity"/>
     </application>
 
 </manifest>

@@ -3,6 +3,9 @@ package com.queen.rxjava2withretrofitdemo;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.queen.rxjava2withretrofitdemo.dao.DaoMaster;
+import com.queen.rxjava2withretrofitdemo.dao.DaoSession;
+
 /**
  * Created by liukun on 2017/4/7.
  */

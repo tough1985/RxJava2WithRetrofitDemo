@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoActivity;
+import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.activity.DoubanMovieActivity;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.activity.RxDoubanMovieActivity;
 import com.queen.rxjava2withretrofitdemo.simpleRetrofit.SimpleRetrofitActivity;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mainSimpleMvpRxjavaBN;
     @BindView(R.id.main_greendao_demo_BN)
     Button mainGreendaoDemoBN;
+    @BindView(R.id.main_greendao_douban_BN)
+    Button mainGreendaoDoubanBN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainSimpleMvpBN.setOnClickListener(this);
         mainSimpleMvpRxjavaBN.setOnClickListener(this);
         mainGreendaoDemoBN.setOnClickListener(this);
+        mainGreendaoDoubanBN.setOnClickListener(this);
     }
 
     @Override
@@ -53,7 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.main_greendao_demo_BN:
                 c = GreenDaoActivity.class;
                 break;
-
+            case R.id.main_greendao_douban_BN:
+                c = GreenDaoDoubanActivity.class;
+                break;
         }
 
         Intent i = new Intent(MainActivity.this, c);

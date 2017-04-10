@@ -1,4 +1,4 @@
-package com.queen.rxjava2withretrofitdemo.entity;
+package com.queen.rxjava2withretrofitdemo.greenDaoEntity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
