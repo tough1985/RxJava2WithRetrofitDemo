@@ -14,6 +14,7 @@ public class JoinCast {
 
     private Long subjectId;
     private Long castId;
+
     @Generated(hash = 1573720734)
     public JoinCast(Long gId, Long subjectId, Long castId) {
         this.gId = gId;

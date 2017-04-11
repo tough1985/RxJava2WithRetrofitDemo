@@ -17,7 +17,6 @@ public interface GreenDoubanMovieContract {
 
         void setMovies(ArrayList<GreenDoubanMovieSubject> doubanMovieSubjects);
 
-
     }
 
     interface Presenter extends BasePresenter {

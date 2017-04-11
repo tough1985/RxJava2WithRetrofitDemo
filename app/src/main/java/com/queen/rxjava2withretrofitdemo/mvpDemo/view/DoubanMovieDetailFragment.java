@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.queen.rxjava2withretrofitdemo.R;
 import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieSubject;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.contract.DoubanMovieDetailContract;
 
 import butterknife.BindView;

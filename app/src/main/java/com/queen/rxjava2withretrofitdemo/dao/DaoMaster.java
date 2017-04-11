@@ -21,24 +21,24 @@ public class DaoMaster extends AbstractDaoMaster {
 
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
-        UserDao.createTable(db, ifNotExists);
         GreenDoubanAvatarDao.createTable(db, ifNotExists);
         GreenDoubanCastDao.createTable(db, ifNotExists);
         GreenDoubanMovieSubjectDao.createTable(db, ifNotExists);
         GreenDoubanRatingDao.createTable(db, ifNotExists);
         JoinCastDao.createTable(db, ifNotExists);
         JoinDirectorDao.createTable(db, ifNotExists);
+        UserDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
-        UserDao.dropTable(db, ifExists);
         GreenDoubanAvatarDao.dropTable(db, ifExists);
         GreenDoubanCastDao.dropTable(db, ifExists);
         GreenDoubanMovieSubjectDao.dropTable(db, ifExists);
         GreenDoubanRatingDao.dropTable(db, ifExists);
         JoinCastDao.dropTable(db, ifExists);
         JoinDirectorDao.dropTable(db, ifExists);
+        UserDao.dropTable(db, ifExists);
     }
 
     /**
@@ -57,13 +57,13 @@ public class DaoMaster extends AbstractDaoMaster {
 
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
-        registerDaoClass(UserDao.class);
         registerDaoClass(GreenDoubanAvatarDao.class);
         registerDaoClass(GreenDoubanCastDao.class);
         registerDaoClass(GreenDoubanMovieSubjectDao.class);
         registerDaoClass(GreenDoubanRatingDao.class);
         registerDaoClass(JoinCastDao.class);
         registerDaoClass(JoinDirectorDao.class);
+        registerDaoClass(UserDao.class);
     }
 
     public DaoSession newSession() {

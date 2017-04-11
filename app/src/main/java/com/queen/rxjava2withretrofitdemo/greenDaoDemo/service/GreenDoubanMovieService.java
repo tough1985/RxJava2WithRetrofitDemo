@@ -1,12 +1,9 @@
 package com.queen.rxjava2withretrofitdemo.greenDaoDemo.service;
 
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieResult;
 import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieDetail;
 import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieResult;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;

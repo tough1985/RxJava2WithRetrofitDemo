@@ -10,6 +10,7 @@ import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoActivity;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.activity.DoubanMovieActivity;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.activity.RxDoubanMovieActivity;
+import com.queen.rxjava2withretrofitdemo.realmDemo.activity.RealmDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.simpleRetrofit.SimpleRetrofitActivity;
 
 import butterknife.BindView;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mainGreendaoDemoBN;
     @BindView(R.id.main_greendao_douban_BN)
     Button mainGreendaoDoubanBN;
+    @BindView(R.id.main_realm_douban_BN)
+    Button mainRealmDoubanBN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainSimpleMvpRxjavaBN.setOnClickListener(this);
         mainGreendaoDemoBN.setOnClickListener(this);
         mainGreendaoDoubanBN.setOnClickListener(this);
+        mainRealmDoubanBN.setOnClickListener(this);
     }
 
     @Override
@@ -59,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.main_greendao_douban_BN:
                 c = GreenDaoDoubanActivity.class;
+                break;
+            case R.id.main_realm_douban_BN:
+                c = RealmDoubanActivity.class;
                 break;
         }
 

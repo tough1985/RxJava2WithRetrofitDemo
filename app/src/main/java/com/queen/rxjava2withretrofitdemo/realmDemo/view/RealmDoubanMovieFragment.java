@@ -1,4 +1,4 @@
-package com.queen.rxjava2withretrofitdemo.greenDaoDemo.view;
+package com.queen.rxjava2withretrofitdemo.realmDemo.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,8 +13,9 @@ import android.widget.Toast;
 
 import com.queen.rxjava2withretrofitdemo.R;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.adapter.GreenDoubanMovieAdapter;
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.contract.GreenDoubanMovieContract;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.realmDemo.adapter.RealmDoubanMovieAdapter;
+import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
+import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,8 @@ import butterknife.Unbinder;
  * Created by liukun on 2017/4/10.
  */
 
-public class GreenDoubanMovieFragment extends Fragment implements GreenDoubanMovieContract.View {
+public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMovieContract.View {
 
-    public static final String TAG = GreenDoubanMovieFragment.class.getSimpleName();
     @BindView(R.id.fragment_douban_movie_loading_PB)
     ProgressBar fragmentDoubanMovieLoadingPB;
     @BindView(R.id.fragment_douban_movie_LV)
@@ -37,15 +37,15 @@ public class GreenDoubanMovieFragment extends Fragment implements GreenDoubanMov
     TextView fragmentDoubanMovieNullTV;
     Unbinder unbinder;
 
-    private GreenDoubanMovieContract.Presenter mPresenter;
+    private RealmDoubanMovieContract.Presenter mPresenter;
 
-    private GreenDoubanMovieAdapter mAdapter;
+    private RealmDoubanMovieAdapter mAdapter;
 
-    public GreenDoubanMovieFragment() {
+    public RealmDoubanMovieFragment() {
     }
 
-    public static GreenDoubanMovieFragment newInstance() {
-        return new GreenDoubanMovieFragment();
+    public static RealmDoubanMovieFragment newInstance() {
+        return new RealmDoubanMovieFragment();
     }
 
     @Nullable
@@ -65,7 +65,7 @@ public class GreenDoubanMovieFragment extends Fragment implements GreenDoubanMov
     }
 
     @Override
-    public void setPresenter(GreenDoubanMovieContract.Presenter presenter) {
+    public void setPresenter(RealmDoubanMovieContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
@@ -91,8 +91,8 @@ public class GreenDoubanMovieFragment extends Fragment implements GreenDoubanMov
     }
 
     @Override
-    public void setMovies(ArrayList<GreenDoubanMovieSubject> doubanMovieSubjects) {
-        mAdapter = new GreenDoubanMovieAdapter(getContext(), doubanMovieSubjects);
+    public void setMovies(ArrayList<RealmDoubanMovieSubject> doubanMovieSubjects) {
+        mAdapter = new RealmDoubanMovieAdapter(getContext(), doubanMovieSubjects);
         fragmentDoubanMovieLV.setAdapter(mAdapter);
     }
 

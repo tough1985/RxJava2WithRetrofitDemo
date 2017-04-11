@@ -1,4 +1,4 @@
-package com.queen.rxjava2withretrofitdemo.mvpDemo.adapter;
+package com.queen.rxjava2withretrofitdemo.realmDemo.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 
@@ -18,28 +19,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by liukun on 2017/4/6.
+ * Created by liukun on 2017/4/10.
  */
 
-public class DoubanMovieAdapter extends BaseAdapter {
-
-
-    private ArrayList<DoubanMovieSubject> mDoubanMovieSubject;
+public class RealmDoubanMovieAdapter extends BaseAdapter {
+    private ArrayList<RealmDoubanMovieSubject> mDoubanMovieSubject;
     private Context mContext;
     private LayoutInflater inflater;
 
-    private DoubanMovieItemClickListener mItemClickListener;
-
-    public interface DoubanMovieItemClickListener{
-        void onDoubanMovieItemClick(DoubanMovieSubject doubanMovieSubject);
-    }
-
-    public DoubanMovieAdapter(Context context, ArrayList<DoubanMovieSubject> doubanMovieSubject,
-                              DoubanMovieItemClickListener itemClickListener) {
+    public RealmDoubanMovieAdapter(Context context, ArrayList<RealmDoubanMovieSubject> doubanMovieSubject) {
         mDoubanMovieSubject = doubanMovieSubject;
         mContext = context;
         inflater = LayoutInflater.from(context);
-        mItemClickListener = itemClickListener;
     }
 
     @Override
@@ -49,11 +40,10 @@ public class DoubanMovieAdapter extends BaseAdapter {
         }
 
         return mDoubanMovieSubject.size();
-
     }
 
     @Override
-    public DoubanMovieSubject getItem(int position) {
+    public RealmDoubanMovieSubject getItem(int position) {
         return mDoubanMovieSubject.get(position);
     }
 
@@ -73,23 +63,16 @@ public class DoubanMovieAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        final DoubanMovieSubject doubanMovieSubject = getItem(position);
+        final RealmDoubanMovieSubject doubanMovieSubject = getItem(position);
         holder.itemDoubanMovieDirectorsTV.setText("导演：" + doubanMovieSubject.getDirectorNames());
         holder.itemDoubanMovieCastsTV.setText("主演：" + doubanMovieSubject.getCastsNames());
-//        holder.itemDoubanMovieRatingTV.setText(String.valueOf(doubanMovieSubject.getRating().getAverage()));
+        holder.itemDoubanMovieRatingTV.setText(String.valueOf(doubanMovieSubject.getRating().getAverage()));
         holder.itemDoubanMovieWatchedTV.setText(doubanMovieSubject.getCollect_count() + "人看过");
         holder.itemDoubanMovieTitleTV.setText(doubanMovieSubject.getTitle());
 
-//        Glide.with(mContext).load(doubanMovieSubject.getImages().getLarge()).into(holder.itemDoubanMovieAvatarIV);
+        Glide.with(mContext).load(doubanMovieSubject.getImages().getLarge()).into(holder.itemDoubanMovieAvatarIV);
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mItemClickListener != null) {
-                    mItemClickListener.onDoubanMovieItemClick(doubanMovieSubject);
-                }
-            }
-        });
+
         return convertView;
     }
 
@@ -114,5 +97,4 @@ public class DoubanMovieAdapter extends BaseAdapter {
             ButterKnife.bind(this, view);
         }
     }
-
 }

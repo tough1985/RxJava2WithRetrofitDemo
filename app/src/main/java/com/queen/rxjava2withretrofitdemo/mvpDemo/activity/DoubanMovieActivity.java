@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.contract.DoubanMovieDetailContract;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.presenter.DoubanMovieDetailPresenter;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.presenter.DoubanMoviePresenter;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.view.DoubanMovieDetailFragment;

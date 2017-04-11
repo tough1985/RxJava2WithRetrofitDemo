@@ -1,29 +1,12 @@
 package com.queen.rxjava2withretrofitdemo.greenDaoDemo.presenter;
 
-import com.queen.rxjava2withretrofitdemo.App;
-import com.queen.rxjava2withretrofitdemo.dao.DaoSession;
-import com.queen.rxjava2withretrofitdemo.dao.GreenDoubanAvatarDao;
-import com.queen.rxjava2withretrofitdemo.dao.GreenDoubanCastDao;
-import com.queen.rxjava2withretrofitdemo.dao.GreenDoubanRatingDao;
-import com.queen.rxjava2withretrofitdemo.dao.JoinCastDao;
-import com.queen.rxjava2withretrofitdemo.dao.JoinDirectorDao;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieResult;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieSubject;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.contract.GreenDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.model.GreenDoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanAvatar;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanCast;
 import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieResult;
 import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieSubject;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanRating;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.JoinCast;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.JoinDirector;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.contract.DoubanMovieContract;
-import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.model.RxjavaDoubanMovieModel;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.observer.LoadingObserver;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.Observer;
 

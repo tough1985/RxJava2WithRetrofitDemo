@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.queen.rxjava2withretrofitdemo.dao.DaoMaster;
 import com.queen.rxjava2withretrofitdemo.dao.DaoSession;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 /**
  * Created by liukun on 2017/4/7.
  */
@@ -27,6 +30,10 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Realm.init(this);
+        RealmConfiguration defaultConfig = new RealmConfiguration.Builder().build();
+        Realm.setDefaultConfiguration(defaultConfig);
+
         setDatabase();
     }
 
