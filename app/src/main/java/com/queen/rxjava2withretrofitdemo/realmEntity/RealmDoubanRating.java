@@ -6,6 +6,7 @@ import io.realm.RealmObject;
  * Created by liukun on 2017/4/6.
  */
 public class RealmDoubanRating extends RealmObject {
+
     private int max;
     private float average;
     private String stars;

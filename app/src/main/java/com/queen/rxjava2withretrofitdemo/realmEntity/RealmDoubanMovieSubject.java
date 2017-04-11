@@ -1,16 +1,26 @@
 package com.queen.rxjava2withretrofitdemo.realmEntity;
 
+import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import io.realm.RealmList;
+import io.realm.RealmModel;
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
+import io.realm.annotations.RealmModule;
 
 /**
  * Created by liukun on 2017/4/6.
  */
-public class RealmDoubanMovieSubject extends RealmObject{
+@RealmClass
+public class RealmDoubanMovieSubject implements RealmModel{
+//public class RealmDoubanMovieSubject extends RealmObject{
 
+    @PrimaryKey
     private String id;
     private String alt;
     private String year;
@@ -20,11 +30,18 @@ public class RealmDoubanMovieSubject extends RealmObject{
     private int collect_count;
     private String subtype;
 
+    @Ignore
+    private ArrayList<String> genres;
+    private RealmList<RealmDoubanGenre> genresList;
+
+
     private RealmDoubanRating rating;
     private RealmDoubanAvatar images;
 
     private RealmList<RealmDoubanCast> casts;
     private RealmList<RealmDoubanCast> directors;
+
+
 
 
     public String getDirectorNames(){
@@ -136,5 +153,35 @@ public class RealmDoubanMovieSubject extends RealmObject{
         return directors;
     }
 
+    public ArrayList<String> getGenres() {
+        return genres;
+    }
 
+    public void setGenres(ArrayList<String> genres) {
+        this.genres = genres;
+    }
+
+    public RealmList<RealmDoubanGenre> getGenresList() {
+
+        return genresList;
+    }
+
+    public void setGenresList(RealmList<RealmDoubanGenre> genresList) {
+        this.genresList = genresList;
+    }
+
+    public void initGenresList(){
+        if (genresList == null) {
+            genresList = new RealmList<>();
+        }
+
+        RealmDoubanGenre genre;
+        if (genres != null && genres.size() > 0) {
+            for (int i = 0, size = genres.size(); i < size; i++) {
+                genre = new RealmDoubanGenre();
+                genre.setName(genres.get(i));
+                genresList.add(genre);
+            }
+        }
+    }
 }

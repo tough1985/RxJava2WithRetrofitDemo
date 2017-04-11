@@ -1,6 +1,7 @@
 package com.queen.rxjava2withretrofitdemo.realmEntity;
 
 import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
  * Created by liukun on 2017/4/6.

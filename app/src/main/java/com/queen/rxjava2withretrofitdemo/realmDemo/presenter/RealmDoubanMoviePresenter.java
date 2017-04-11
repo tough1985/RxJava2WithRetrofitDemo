@@ -2,9 +2,6 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.presenter;
 
 import android.util.Log;
 
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.model.GreenDoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieResult;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieSubject;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.observer.LoadingObserver;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.model.RealmDoubanMovieModel;
@@ -15,6 +12,7 @@ import java.util.ArrayList;
 
 import io.reactivex.Observer;
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by liukun on 2017/4/10.
@@ -26,9 +24,12 @@ public class RealmDoubanMoviePresenter implements RealmDoubanMovieContract.Prese
 
     private RealmDoubanMovieContract.View mView;
 
+    private Realm realm;
+
     public RealmDoubanMoviePresenter(RealmDoubanMovieContract.View mView) {
         this.mView = mView;
         mView.setPresenter(this);
+        realm = Realm.getDefaultInstance();
     }
 
     @Override
@@ -42,18 +43,38 @@ public class RealmDoubanMoviePresenter implements RealmDoubanMovieContract.Prese
                     mView.showNull();
                 } else {
 
-                    mView.setMovies(value.getSubjects());
+
 
                     final ArrayList<RealmDoubanMovieSubject> subjects = value.getSubjects();
-//                    GreenDoubanMovieModel.getInstance().saveSubjects(subjects);
 
-                    Realm realm = Realm.getDefaultInstance();
                     Log.e(TAG, "realm.getPath()=" + realm.getPath());
 
-                    realm.executeTransaction(new Realm.Transaction() {
+                    for (int i = 0; i < subjects.size(); i++) {
+                        subjects.get(i).initGenresList();
+                    }
+
+                    realm.executeTransactionAsync(new Realm.Transaction() {
                         @Override
                         public void execute(Realm realm) {
-                            realm.copyToRealm(subjects);
+                            Log.e(TAG, "execute : Thread.currentThread().getName()=" + Thread.currentThread().getName
+                                    ());
+//                            realm.copyToRealm(subjects);
+//                            realm.copyToRealm(subjects);
+                            realm.copyToRealmOrUpdate(subjects);
+                        }
+                    }, new Realm.Transaction.OnSuccess() {
+                        @Override
+                        public void onSuccess() {
+                            Log.e(TAG, "onSuccess : Thread.currentThread().getName()=" + Thread.currentThread().getName
+                                    ());
+                            RealmResults<RealmDoubanMovieSubject> subjectRealmList = realm.where(RealmDoubanMovieSubject.class)
+                                    .findAllAsync();
+                            ArrayList<RealmDoubanMovieSubject> list = new ArrayList<>(subjectRealmList);
+
+                            Log.e(TAG, "list.size()=" + list.size());
+
+                            mView.setMovies(list);
+
                         }
                     });
 
