@@ -27,6 +27,11 @@
         <activity android:name=".greenDaoDemo.GreenDaoActivity"/>
         <activity android:name=".greenDaoDemo.GreenDaoDoubanActivity"/>
         <activity android:name=".realmDemo.activity.RealmDoubanActivity"/>
+        <activity android:name=".frescoDemo.FrescoActivity"/>
+
+        <meta-data
+            android:name="com.queen.rxjava2withretrofitdemo.CustomImageSizeGlideModule"
+            android:value="GlideModule" />
     </application>
 
 </manifest>

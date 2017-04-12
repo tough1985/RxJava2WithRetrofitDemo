@@ -1,4 +1,4 @@
-package com.queen.rxjava2withretrofitdemo.mvpDemo.view;
+package com.queen.rxjava2withretrofitdemo.realmDemo.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,22 +13,22 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.contract.DoubanMovieDetailContract;
+import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieDetailContract;
+import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
+import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by liukun on 2017/4/6.
+ * Created by liukun on 2017/4/11.
  */
 
-public class DoubanMovieDetailFragment extends Fragment implements DoubanMovieDetailContract.View {
+public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDoubanMovieDetailContract.View {
 
-    public static final String TAG = DoubanMovieDetailFragment.class.getSimpleName();
+    public static final String TAG = RealmDoubanMovieDetailFragment.class.getSimpleName();
 
-    public static final String MOVIE_ID = "MovieId";
     @BindView(R.id.fragment_douban_movie_detail_loading_PB)
     ProgressBar fragmentDoubanMovieDetailLoadingPB;
     @BindView(R.id.fragment_douban_movie_detail_null_TV)
@@ -49,17 +49,19 @@ public class DoubanMovieDetailFragment extends Fragment implements DoubanMovieDe
     TextView fragmentDoubanMovieDetailCastTV;
     @BindView(R.id.fragment_douban_movie_detail_summary_TV)
     TextView fragmentDoubanMovieDetailSummaryTV;
+
     Unbinder unbinder;
 
-    private String movieId;
+    private RealmDoubanMovieDetailContract.Presenter mPresenter;
 
-    private DoubanMovieDetailContract.Presenter mPresenter;
+    private RealmDoubanMovieSubject subject;
 
-    public static DoubanMovieDetailFragment newInstance(String movieId) {
-        DoubanMovieDetailFragment fragment = new DoubanMovieDetailFragment();
+    public static RealmDoubanMovieDetailFragment newInstance(RealmDoubanMovieSubject subject){
+        RealmDoubanMovieDetailFragment fragment = new RealmDoubanMovieDetailFragment();
 
         Bundle args = new Bundle();
-        args.putString(MOVIE_ID, movieId);
+//        args.putParcelable("subject", Parcels.wrap(subject));
+        args.putParcelable("subject", subject);
         fragment.setArguments(args);
 
         return fragment;
@@ -68,7 +70,9 @@ public class DoubanMovieDetailFragment extends Fragment implements DoubanMovieDe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        movieId = getArguments().getString(MOVIE_ID);
+
+//        subject = Parcels.unwrap(getArguments().getParcelable("subject"));
+        subject = getArguments().getParcelable("subject");
     }
 
     @Nullable
@@ -84,14 +88,23 @@ public class DoubanMovieDetailFragment extends Fragment implements DoubanMovieDe
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.getMovie(movieId);
+
+        mPresenter.getMovie(subject.getId());
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
     @Override
     public boolean isAlived() {
         return this.isAdded();
     }
+
     @Override
-    public void setPresenter(DoubanMovieDetailContract.Presenter presenter) {
+    public void setPresenter(RealmDoubanMovieDetailContract.Presenter presenter) {
         mPresenter = presenter;
     }
 
@@ -116,22 +129,15 @@ public class DoubanMovieDetailFragment extends Fragment implements DoubanMovieDe
     }
 
     @Override
-    public void setMovie(DoubanMovieDetail doubanMovieSubject) {
-        fragmentDoubanMovieDetailDirectorTV.setText("导演：" + doubanMovieSubject.getDirectorNames());
-        fragmentDoubanMovieDetailCastTV.setText("主演：" + doubanMovieSubject.getCastsNames());
-        fragmentDoubanMovieDetailTitleTV.setText(doubanMovieSubject.getTitle());
-        fragmentDoubanMovieDetailYearTV.setText("上映时间：" + doubanMovieSubject.getYear());
-        fragmentDoubanMovieDetailSummaryTV.setText("简介：" + doubanMovieSubject.getSummary());
-        fragmentDoubanMovieDetailCountriesTV.setText("国家：" + doubanMovieSubject.getContriesString());
-        fragmentDoubanMovieDetailGenresTV.setText("类型：" + doubanMovieSubject.getGenresStr());
+    public void setMovie(RealmDoubanMovieDetail doubanMovieDetail) {
+        fragmentDoubanMovieDetailDirectorTV.setText("导演：" + doubanMovieDetail.getDirectorNames());
+        fragmentDoubanMovieDetailCastTV.setText("主演：" + doubanMovieDetail.getCastsNames());
+        fragmentDoubanMovieDetailTitleTV.setText(doubanMovieDetail.getTitle());
+        fragmentDoubanMovieDetailYearTV.setText("上映时间：" + doubanMovieDetail.getYear());
+        fragmentDoubanMovieDetailSummaryTV.setText("简介：" + doubanMovieDetail.getSummary());
+        fragmentDoubanMovieDetailCountriesTV.setText("国家：" + doubanMovieDetail.getContriesString());
+        fragmentDoubanMovieDetailGenresTV.setText("类型：" + doubanMovieDetail.getGenresStr());
 
-        Glide.with(getContext()).load(doubanMovieSubject.getImages().getLarge()).into(fragmentDoubanMovieDetailImageIV);
-    }
-
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+        Glide.with(getContext()).load(doubanMovieDetail.getImages().getLarge()).into(fragmentDoubanMovieDetailImageIV);
     }
 }

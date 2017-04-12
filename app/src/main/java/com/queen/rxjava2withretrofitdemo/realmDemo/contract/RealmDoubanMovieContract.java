@@ -21,6 +21,5 @@ public interface RealmDoubanMovieContract {
     }
 
     interface Presenter extends BasePresenter {
-
     }
 }

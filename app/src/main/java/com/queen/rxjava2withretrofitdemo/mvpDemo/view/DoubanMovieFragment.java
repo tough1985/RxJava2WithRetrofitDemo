@@ -90,7 +90,10 @@ public class DoubanMovieFragment extends Fragment implements DoubanMovieContract
         super.onResume();
         mPresenter.start();
     }
-
+    @Override
+    public boolean isAlived() {
+        return this.isAdded();
+    }
     @Override
     public void setMovies(ArrayList<DoubanMovieSubject> doubanMovieSubjects) {
 

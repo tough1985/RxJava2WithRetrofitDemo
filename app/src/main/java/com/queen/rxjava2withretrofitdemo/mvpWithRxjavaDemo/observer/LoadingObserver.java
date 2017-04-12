@@ -22,7 +22,7 @@ public class LoadingObserver<T> implements Observer<T> {
 
     @Override
     public void onSubscribe(Disposable d) {
-        if (mBaseView != null) {
+        if (mBaseView != null && mBaseView.isAlived()) {
             mBaseView.showLoading();
         }
     }
@@ -36,14 +36,14 @@ public class LoadingObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
-        if (mBaseView != null) {
+        if (mBaseView != null && mBaseView.isAlived()) {
             mBaseView.showError(e.getMessage());
         }
     }
 
     @Override
     public void onComplete() {
-        if (mBaseView != null) {
+        if (mBaseView != null && mBaseView.isAlived()) {
             mBaseView.dismissLoading();
         }
     }

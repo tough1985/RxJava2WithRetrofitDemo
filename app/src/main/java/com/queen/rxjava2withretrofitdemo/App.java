@@ -3,8 +3,10 @@ package com.queen.rxjava2withretrofitdemo;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.queen.rxjava2withretrofitdemo.dao.DaoMaster;
 import com.queen.rxjava2withretrofitdemo.dao.DaoSession;
+import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanModule;
 
 import io.realm.DynamicRealm;
 import io.realm.FieldAttribute;
@@ -37,11 +39,14 @@ public class App extends Application {
         Realm.init(this);
         RealmConfiguration defaultConfig = new RealmConfiguration.Builder()
                 .schemaVersion(2)
+                .modules(new RealmDoubanModule())
                 .migration(new DefaultMigration())
                 .build();
         Realm.setDefaultConfiguration(defaultConfig);
 
         setDatabase();
+
+        Fresco.initialize(this);
     }
 
     private void setDatabase(){
@@ -65,7 +70,12 @@ public class App extends Application {
             RealmSchema schema = realm.getSchema();
 
             if (oldVersion == 0) {
-                schema.get("RealmDoubanAvatar").removePrimaryKey();
+//                schema.get("RealmDoubanAvatar").removePrimaryKey();
+
+                schema.create("RealmDoubanGenre")
+                        .addField("small", String.class)
+                        .addField("large", String.class)
+                        .addField("medium", String.class);
                 oldVersion++;
             }
 

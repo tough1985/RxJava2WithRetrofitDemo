@@ -7,6 +7,8 @@ package com.queen.rxjava2withretrofitdemo.base;
 public interface BaseView<T> {
     void setPresenter(T presenter);
 
+    boolean isAlived();
+
     void showError(String errMes);
 
     void showLoading();

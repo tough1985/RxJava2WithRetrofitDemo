@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.queen.rxjava2withretrofitdemo.frescoDemo.FrescoActivity;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoActivity;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.GreenDaoDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.activity.DoubanMovieActivity;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button mainGreendaoDoubanBN;
     @BindView(R.id.main_realm_douban_BN)
     Button mainRealmDoubanBN;
+    @BindView(R.id.main_fresco_BN)
+    Button mainFrescoBN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainGreendaoDemoBN.setOnClickListener(this);
         mainGreendaoDoubanBN.setOnClickListener(this);
         mainRealmDoubanBN.setOnClickListener(this);
+        mainFrescoBN.setOnClickListener(this);
     }
 
     @Override
@@ -66,6 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.main_realm_douban_BN:
                 c = RealmDoubanActivity.class;
+                break;
+            case R.id.main_fresco_BN:
+                c = FrescoActivity.class;
                 break;
         }
 

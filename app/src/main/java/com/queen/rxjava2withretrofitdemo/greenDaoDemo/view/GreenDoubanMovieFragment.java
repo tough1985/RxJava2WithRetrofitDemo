@@ -65,6 +65,11 @@ public class GreenDoubanMovieFragment extends Fragment implements GreenDoubanMov
     }
 
     @Override
+    public boolean isAlived() {
+        return this.isAdded();
+    }
+
+    @Override
     public void setPresenter(GreenDoubanMovieContract.Presenter presenter) {
         mPresenter = presenter;
     }

@@ -40,10 +40,10 @@ public class RealmDoubanMoviePresenter implements RealmDoubanMovieContract.Prese
             public void observerOnNext(RealmDoubanMovieResult value) {
                 //如果返回数据为空，显示空态
                 if (value == null || value.getSubjects() == null || value.getSubjects().size() == 0) {
-                    mView.showNull();
+                    if (mView.isAlived()) {
+                        mView.showNull();
+                    }
                 } else {
-
-
 
                     final ArrayList<RealmDoubanMovieSubject> subjects = value.getSubjects();
 
@@ -73,7 +73,10 @@ public class RealmDoubanMoviePresenter implements RealmDoubanMovieContract.Prese
 
                             Log.e(TAG, "list.size()=" + list.size());
 
-                            mView.setMovies(list);
+                            if (mView.isAlived()) {
+
+                                mView.setMovies(list);
+                            }
 
                         }
                     });
@@ -85,4 +88,5 @@ public class RealmDoubanMoviePresenter implements RealmDoubanMovieContract.Prese
 
         RealmDoubanMovieModel.getInstance().getMovieInTheaters("上海", observer);
     }
+
 }

@@ -51,4 +51,10 @@
         android:text="Simple Realm Douban"
         style="@style/MainSimpleButton"/>
 
+    <Button
+        android:id="@+id/main_fresco_BN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Fresco and Glide"
+        style="@style/MainSimpleButton"/>
 </LinearLayout>

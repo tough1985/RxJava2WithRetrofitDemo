@@ -1,24 +1,24 @@
 package com.queen.rxjava2withretrofitdemo.realmEntity;
 
-import java.lang.annotation.Annotation;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import io.realm.RealmDoubanMovieSubjectRealmProxy;
 import io.realm.RealmList;
 import io.realm.RealmModel;
-import io.realm.RealmObject;
 import io.realm.annotations.Ignore;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.RealmClass;
-import io.realm.annotations.RealmModule;
 
 /**
  * Created by liukun on 2017/4/6.
  */
+
 @RealmClass
-public class RealmDoubanMovieSubject implements RealmModel{
-//public class RealmDoubanMovieSubject extends RealmObject{
+public class RealmDoubanMovieSubject implements RealmModel, Parcelable{
 
     @PrimaryKey
     private String id;
@@ -34,15 +34,14 @@ public class RealmDoubanMovieSubject implements RealmModel{
     private ArrayList<String> genres;
     private RealmList<RealmDoubanGenre> genresList;
 
-
     private RealmDoubanRating rating;
     private RealmDoubanAvatar images;
 
     private RealmList<RealmDoubanCast> casts;
     private RealmList<RealmDoubanCast> directors;
 
-
-
+    public RealmDoubanMovieSubject() {
+    }
 
     public String getDirectorNames(){
         return getNames(directors);
@@ -68,8 +67,9 @@ public class RealmDoubanMovieSubject implements RealmModel{
         return sb.toString();
     }
 
-
-
+    /**
+     * ———————————————— ↓↓↓↓ getter and setter ↓↓↓↓ ————————————————
+     */
 
     public String getId() {
         return this.id;
@@ -144,13 +144,19 @@ public class RealmDoubanMovieSubject implements RealmModel{
     }
 
     public RealmList<RealmDoubanCast> getCasts() {
-
         return casts;
     }
 
-    public RealmList<RealmDoubanCast> getDirectors() {
+    public void setCasts(RealmList<RealmDoubanCast> casts) {
+        this.casts = casts;
+    }
 
+    public RealmList<RealmDoubanCast> getDirectors() {
         return directors;
+    }
+
+    public void setDirectors(RealmList<RealmDoubanCast> directors) {
+        this.directors = directors;
     }
 
     public ArrayList<String> getGenres() {
@@ -161,14 +167,6 @@ public class RealmDoubanMovieSubject implements RealmModel{
         this.genres = genres;
     }
 
-    public RealmList<RealmDoubanGenre> getGenresList() {
-
-        return genresList;
-    }
-
-    public void setGenresList(RealmList<RealmDoubanGenre> genresList) {
-        this.genresList = genresList;
-    }
 
     public void initGenresList(){
         if (genresList == null) {
@@ -183,5 +181,57 @@ public class RealmDoubanMovieSubject implements RealmModel{
                 genresList.add(genre);
             }
         }
+    }
+
+    /**
+     * ———————————————— ↓↓↓↓ Parcelable code ↓↓↓↓ ————————————————
+     */
+
+    protected RealmDoubanMovieSubject(android.os.Parcel in) {
+        id = in.readString();
+        alt = in.readString();
+        year = in.readString();
+        title = in.readString();
+        original_title = in.readString();
+        collect_count = in.readInt();
+        subtype = in.readString();
+        genres = in.createStringArrayList();
+        rating = in.readParcelable(RealmDoubanRating.class.getClassLoader());
+        images = in.readParcelable(RealmDoubanAvatar.class.getClassLoader());
+        in.readTypedList(casts, RealmDoubanCast.CREATOR);
+        in.readTypedList(directors, RealmDoubanCast.CREATOR);
+    }
+
+    public static final Creator<RealmDoubanMovieSubject> CREATOR = new Creator<RealmDoubanMovieSubject>() {
+        @Override
+        public RealmDoubanMovieSubject createFromParcel(android.os.Parcel in) {
+            return new RealmDoubanMovieSubject(in);
+        }
+
+        @Override
+        public RealmDoubanMovieSubject[] newArray(int size) {
+            return new RealmDoubanMovieSubject[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(android.os.Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(alt);
+        dest.writeString(year);
+        dest.writeString(title);
+        dest.writeString(original_title);
+        dest.writeInt(collect_count);
+        dest.writeString(subtype);
+        dest.writeStringList(genres);
+        dest.writeParcelable(rating, flags);
+        dest.writeParcelable(images, flags);
+        dest.writeTypedList(casts);
+        dest.writeTypedList(directors);
     }
 }

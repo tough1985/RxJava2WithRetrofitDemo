@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.queen.rxjava2withretrofitdemo.R;
+import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.mvpDemo.adapter.DoubanMovieAdapter;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
@@ -27,10 +29,18 @@ public class RealmDoubanMovieAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater inflater;
 
-    public RealmDoubanMovieAdapter(Context context, ArrayList<RealmDoubanMovieSubject> doubanMovieSubject) {
+    private DoubanMovieItemClickListener mItemClickListener;
+
+    public interface DoubanMovieItemClickListener{
+        void onDoubanMovieItemClick(RealmDoubanMovieSubject doubanMovieSubject);
+    }
+
+    public RealmDoubanMovieAdapter(Context context, ArrayList<RealmDoubanMovieSubject> doubanMovieSubject,
+                                   DoubanMovieItemClickListener itemClickListener) {
         mDoubanMovieSubject = doubanMovieSubject;
         mContext = context;
         inflater = LayoutInflater.from(context);
+        mItemClickListener = itemClickListener;
     }
 
     @Override
@@ -72,6 +82,14 @@ public class RealmDoubanMovieAdapter extends BaseAdapter {
 
         Glide.with(mContext).load(doubanMovieSubject.getImages().getLarge()).into(holder.itemDoubanMovieAvatarIV);
 
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onDoubanMovieItemClick(doubanMovieSubject);
+                }
+            }
+        });
 
         return convertView;
     }

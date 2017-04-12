@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.queen.rxjava2withretrofitdemo.R;
 import com.queen.rxjava2withretrofitdemo.greenDaoDemo.adapter.GreenDoubanMovieAdapter;
+import com.queen.rxjava2withretrofitdemo.realmDemo.activity.RealmDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.realmDemo.adapter.RealmDoubanMovieAdapter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
@@ -29,6 +30,8 @@ import butterknife.Unbinder;
 
 public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMovieContract.View {
 
+    public static final String TAG = RealmDoubanMovieFragment.class.getSimpleName();
+
     @BindView(R.id.fragment_douban_movie_loading_PB)
     ProgressBar fragmentDoubanMovieLoadingPB;
     @BindView(R.id.fragment_douban_movie_LV)
@@ -41,11 +44,24 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
 
     private RealmDoubanMovieAdapter mAdapter;
 
+    private RealmDoubanMovieAdapter.DoubanMovieItemClickListener mItemClickListener;
+
     public RealmDoubanMovieFragment() {
     }
 
     public static RealmDoubanMovieFragment newInstance() {
         return new RealmDoubanMovieFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mItemClickListener = new RealmDoubanMovieAdapter.DoubanMovieItemClickListener() {
+            @Override
+            public void onDoubanMovieItemClick(RealmDoubanMovieSubject doubanMovieSubject) {
+                ((RealmDoubanActivity)getActivity()).transToMovieDetail(doubanMovieSubject);
+            }
+        };
     }
 
     @Nullable
@@ -62,6 +78,11 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
     public void onResume() {
         super.onResume();
         mPresenter.start();
+    }
+
+    @Override
+    public boolean isAlived() {
+        return this.isAdded();
     }
 
     @Override
@@ -92,7 +113,7 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
 
     @Override
     public void setMovies(ArrayList<RealmDoubanMovieSubject> doubanMovieSubjects) {
-        mAdapter = new RealmDoubanMovieAdapter(getContext(), doubanMovieSubjects);
+        mAdapter = new RealmDoubanMovieAdapter(getContext(), doubanMovieSubjects, mItemClickListener);
         fragmentDoubanMovieLV.setAdapter(mAdapter);
     }
 
