@@ -12,8 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.queen.mvplib.MvpFragment;
 import com.queen.rxjava2withretrofitdemo.R;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieDetailContract;
+import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMovieDetailPresenter;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
@@ -25,7 +27,9 @@ import butterknife.Unbinder;
  * Created by liukun on 2017/4/11.
  */
 
-public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDoubanMovieDetailContract.View {
+public class RealmDoubanMovieDetailFragment extends MvpFragment<RealmDoubanMovieDetailContract.View,
+        RealmDoubanMovieDetailContract.Presenter<RealmDoubanMovieDetailContract.View>> implements
+        RealmDoubanMovieDetailContract.View {
 
     public static final String TAG = RealmDoubanMovieDetailFragment.class.getSimpleName();
 
@@ -52,7 +56,7 @@ public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDou
 
     Unbinder unbinder;
 
-    private RealmDoubanMovieDetailContract.Presenter mPresenter;
+//    private RealmDoubanMovieDetailContract.Presenter mPresenter;
 
     private RealmDoubanMovieSubject subject;
 
@@ -93,6 +97,11 @@ public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDou
     }
 
     @Override
+    public RealmDoubanMovieDetailContract.Presenter<RealmDoubanMovieDetailContract.View> createPresenter() {
+        return new RealmDoubanMovieDetailPresenter();
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
@@ -102,6 +111,8 @@ public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDou
     public boolean isAlived() {
         return this.isAdded();
     }
+
+
 
     @Override
     public void setPresenter(RealmDoubanMovieDetailContract.Presenter presenter) {
@@ -140,4 +151,6 @@ public class RealmDoubanMovieDetailFragment extends Fragment implements RealmDou
 
         Glide.with(getContext()).load(doubanMovieDetail.getImages().getLarge()).into(fragmentDoubanMovieDetailImageIV);
     }
+
+
 }

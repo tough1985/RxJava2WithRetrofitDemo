@@ -2,9 +2,6 @@ package com.queen.rxjava2withretrofitdemo.realmEntity;
 
 import android.os.Parcelable;
 
-import org.parceler.Parcel;
-
-import io.realm.RealmDoubanCastRealmProxy;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 

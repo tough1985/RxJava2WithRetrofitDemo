@@ -2,19 +2,19 @@ package com.queen.rxjava2withretrofitdemo.realmEntity;
 
 import android.os.Parcelable;
 
-import org.parceler.Parcel;
-
-import io.realm.RealmDoubanGenreRealmProxy;
-import io.realm.RealmObject;
+import io.realm.RealmModel;
 import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.RealmClass;
 
 /**
  * Created by liukun on 2017/4/11.
  */
-public class RealmDoubanGenre extends RealmObject implements Parcelable{
+@RealmClass
+public class RealmDoubanGenre implements RealmModel, Parcelable{
 
     @PrimaryKey
-    private String name;
+//    private String name;
+    private String value;
 
     public RealmDoubanGenre() {
     }
@@ -23,20 +23,28 @@ public class RealmDoubanGenre extends RealmObject implements Parcelable{
      * ———————————————— ↓↓↓↓ getter and setter ↓↓↓↓ ————————————————
      */
 
-    public String getName() {
-        return name;
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+
+
+    public String getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(String value) {
+        this.value = value;
     }
-
 
     /**
      * ———————————————— ↓↓↓↓ Parcelable code ↓↓↓↓ ————————————————
      */
     protected RealmDoubanGenre(android.os.Parcel in) {
-        name = in.readString();
+        value = in.readString();
     }
 
     public static final Creator<RealmDoubanGenre> CREATOR = new Creator<RealmDoubanGenre>() {
@@ -58,6 +66,7 @@ public class RealmDoubanGenre extends RealmObject implements Parcelable{
 
     @Override
     public void writeToParcel(android.os.Parcel dest, int flags) {
-        dest.writeString(name);
+        dest.writeString(value);
     }
+
 }

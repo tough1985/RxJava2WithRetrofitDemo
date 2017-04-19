@@ -1,11 +1,9 @@
 package com.queen.rxjava2withretrofitdemo.realmDemo.model;
 
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.model.GreenDoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.service.GreenDoubanMovieService;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieResult;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.queen.rxjava2withretrofitdemo.mvpDemo.model.DoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.realmDemo.adapter.RealmDoubanMovieAdapter;
+import com.queen.rxjava2withretrofitdemo.realmDemo.RealmUtil.RealmStringTypeAdapterFactory;
 import com.queen.rxjava2withretrofitdemo.realmDemo.service.RealmDoubanMovieService;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieResult;
@@ -42,10 +40,17 @@ public class RealmDoubanMovieModel {
                 .retryOnConnectionFailure(true)
                 .build();
 
+        Gson gson = new GsonBuilder()
+//                .registerTypeAdapter(new TypeToken<RealmList<RealmDoubanGenre>>(){}.getType(),
+//                        RealmDoubanGenreListTypeAdapter.INSTANCE)
+                .registerTypeAdapterFactory(new RealmStringTypeAdapterFactory())
+                .create();
+
+
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
@@ -55,14 +60,12 @@ public class RealmDoubanMovieModel {
     private static RealmDoubanMovieModel instance;
 
     public static RealmDoubanMovieModel getInstance() {
-
         if (instance == null) {
-            synchronized (DoubanMovieModel.class) {
+            synchronized (RealmDoubanMovieModel.class) {
                 instance = new RealmDoubanMovieModel();
             }
         }
         return instance;
-
     }
 
     public void getMovieInTheaters(String city, Observer<RealmDoubanMovieResult> observer){
@@ -86,8 +89,6 @@ public class RealmDoubanMovieModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(observer);
     }
-
-
 
     private class HttpResultFunc<T> implements Function<T, T> {
 

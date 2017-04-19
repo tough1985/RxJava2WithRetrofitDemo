@@ -43,13 +43,13 @@ public class RealmDoubanActivity extends AppCompatActivity {
                 .add(R.id.douban_movie_content, fragment)
                 .commit();
 
-        mDoubanMoviePresenter = new RealmDoubanMoviePresenter(fragment);
+//        mDoubanMoviePresenter = new RealmDoubanMoviePresenter(fragment);
     }
 
     public void transToMovieDetail(RealmDoubanMovieSubject subject){
 
         RealmDoubanMovieDetailFragment movieDetailFragment = RealmDoubanMovieDetailFragment.newInstance(subject);
-        RealmDoubanMovieDetailContract.Presenter movieDetailPresenter = new RealmDoubanMovieDetailPresenter(movieDetailFragment);
+//        RealmDoubanMovieDetailContract.Presenter movieDetailPresenter = new RealmDoubanMovieDetailPresenter(movieDetailFragment);
 
         getSupportFragmentManager()
                 .beginTransaction()

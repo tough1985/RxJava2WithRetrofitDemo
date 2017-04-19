@@ -2,7 +2,6 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.queen.mvplib.MvpFragment;
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.adapter.GreenDoubanMovieAdapter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.activity.RealmDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.realmDemo.adapter.RealmDoubanMovieAdapter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
+import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMoviePresenter;
 import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
@@ -28,7 +28,10 @@ import butterknife.Unbinder;
  * Created by liukun on 2017/4/10.
  */
 
-public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMovieContract.View {
+public class RealmDoubanMovieFragment extends MvpFragment<RealmDoubanMovieContract.View, RealmDoubanMovieContract
+        .Presenter<RealmDoubanMovieContract.View>>
+        implements
+        RealmDoubanMovieContract.View {
 
     public static final String TAG = RealmDoubanMovieFragment.class.getSimpleName();
 
@@ -40,7 +43,7 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
     TextView fragmentDoubanMovieNullTV;
     Unbinder unbinder;
 
-    private RealmDoubanMovieContract.Presenter mPresenter;
+//    private RealmDoubanMovieContract.Presenter mPresenter;
 
     private RealmDoubanMovieAdapter mAdapter;
 
@@ -51,6 +54,11 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
 
     public static RealmDoubanMovieFragment newInstance() {
         return new RealmDoubanMovieFragment();
+    }
+
+    @Override
+    public RealmDoubanMovieContract.Presenter<RealmDoubanMovieContract.View> createPresenter() {
+        return new RealmDoubanMoviePresenter();
     }
 
     @Override
@@ -85,10 +93,10 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
         return this.isAdded();
     }
 
-    @Override
-    public void setPresenter(RealmDoubanMovieContract.Presenter presenter) {
-        mPresenter = presenter;
-    }
+//    @Override
+//    public void setPresenter(RealmDoubanMovieContract.Presenter presenter) {
+//        mPresenter = presenter;
+//    }
 
     @Override
     public void showError(String errMes) {
@@ -117,9 +125,12 @@ public class RealmDoubanMovieFragment extends Fragment implements RealmDoubanMov
         fragmentDoubanMovieLV.setAdapter(mAdapter);
     }
 
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
     }
+
+
 }
