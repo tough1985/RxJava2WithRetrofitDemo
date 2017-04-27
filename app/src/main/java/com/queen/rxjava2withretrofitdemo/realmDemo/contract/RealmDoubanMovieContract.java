@@ -2,11 +2,7 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.contract;
 
 import com.queen.mvplib.BaseMvp.MvpPresenter;
 import com.queen.mvplib.BaseMvp.MvpView;
-import com.queen.rxjava2withretrofitdemo.base.BasePresenter;
-import com.queen.rxjava2withretrofitdemo.base.BaseView;
-import com.queen.rxjava2withretrofitdemo.greenDaoDemo.contract.GreenDoubanMovieContract;
-import com.queen.rxjava2withretrofitdemo.greenDaoEntity.GreenDoubanMovieSubject;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 

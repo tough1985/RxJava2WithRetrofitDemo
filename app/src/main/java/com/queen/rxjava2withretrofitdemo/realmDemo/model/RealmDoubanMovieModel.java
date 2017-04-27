@@ -2,11 +2,10 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.model.DoubanMovieModel;
 import com.queen.rxjava2withretrofitdemo.realmDemo.RealmUtil.RealmStringTypeAdapterFactory;
 import com.queen.rxjava2withretrofitdemo.realmDemo.service.RealmDoubanMovieService;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieResult;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieDetail;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieResult;
 import com.queen.rxjava2withretrofitdemo.simpleRetrofit.SignInterceptor;
 
 import java.util.concurrent.TimeUnit;

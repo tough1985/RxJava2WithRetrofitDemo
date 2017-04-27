@@ -1,7 +1,7 @@
 package com.queen.rxjava2withretrofitdemo.realmDemo.service;
 
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieResult;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieDetail;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieResult;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;

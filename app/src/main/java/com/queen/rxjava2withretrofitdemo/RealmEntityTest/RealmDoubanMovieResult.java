@@ -1,4 +1,4 @@
-package com.queen.rxjava2withretrofitdemo.realmEntity;
+package com.queen.rxjava2withretrofitdemo.RealmEntityTest;
 
 import java.util.ArrayList;
 

@@ -7,7 +7,7 @@ import android.util.Log;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.queen.rxjava2withretrofitdemo.dao.DaoMaster;
 import com.queen.rxjava2withretrofitdemo.dao.DaoSession;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanModule;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanModule;
 
 import io.realm.DynamicRealm;
 import io.realm.FieldAttribute;
@@ -49,6 +49,7 @@ public class App extends Application {
         setDatabase();
 
         Fresco.initialize(this);
+
     }
 
     private void setDatabase(){

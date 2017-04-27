@@ -5,17 +5,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.view.DoubanMovieDetailFragment;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.view.DoubanMovieFragment;
-import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.presenter.RxDoubanMovieDetailPresenter;
-import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
-import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieDetailContract;
-import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMovieDetailPresenter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMoviePresenter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.view.RealmDoubanMovieDetailFragment;
 import com.queen.rxjava2withretrofitdemo.realmDemo.view.RealmDoubanMovieFragment;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 /**
  * Created by liukun on 2017/4/10.

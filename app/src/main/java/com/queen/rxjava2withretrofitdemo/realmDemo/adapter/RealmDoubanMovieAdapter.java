@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.queen.rxjava2withretrofitdemo.R;
-import com.queen.rxjava2withretrofitdemo.entity.DoubanMovieSubject;
-import com.queen.rxjava2withretrofitdemo.mvpDemo.adapter.DoubanMovieAdapter;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 

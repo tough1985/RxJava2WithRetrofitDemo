@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 apply plugin: 'realm-android'
+apply plugin: "me.xiba.mvpplugin"
 
 android {
     compileSdkVersion 25
@@ -21,7 +22,14 @@ android {
         }
     }
 }
-
+//def mvpGeneratorProperties = new Properties()
+//mvpGeneratorProperties.load(new FileInputStream(file("mvpGenerator.properties")))
+//
+xibaMvp{
+    applicationId android.defaultConfig.applicationId
+    packageName 'reLogin'
+    functionName 'reLogin'
+}
 greendao {
     schemaVersion 5
     daoPackage 'com.queen.rxjava2withretrofitdemo.dao'

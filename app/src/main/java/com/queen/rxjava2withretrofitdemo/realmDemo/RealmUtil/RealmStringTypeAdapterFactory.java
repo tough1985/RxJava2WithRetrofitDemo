@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanGenre;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanGenre;
 
 import io.realm.RealmList;
 

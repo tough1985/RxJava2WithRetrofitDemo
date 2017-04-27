@@ -4,7 +4,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanGenre;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanGenre;
 
 import java.io.IOException;
 

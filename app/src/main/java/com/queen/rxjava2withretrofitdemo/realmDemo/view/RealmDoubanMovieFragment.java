@@ -16,13 +16,14 @@ import com.queen.rxjava2withretrofitdemo.realmDemo.activity.RealmDoubanActivity;
 import com.queen.rxjava2withretrofitdemo.realmDemo.adapter.RealmDoubanMovieAdapter;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMoviePresenter;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.realm.RealmDoubanAvatarRealmProxy;
 
 /**
  * Created by liukun on 2017/4/10.
@@ -70,6 +71,7 @@ public class RealmDoubanMovieFragment extends MvpFragment<RealmDoubanMovieContra
                 ((RealmDoubanActivity)getActivity()).transToMovieDetail(doubanMovieSubject);
             }
         };
+
     }
 
     @Nullable

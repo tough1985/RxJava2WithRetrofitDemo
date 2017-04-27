@@ -1,12 +1,10 @@
 package com.queen.rxjava2withretrofitdemo.realmDemo.presenter;
 
-import com.queen.mvplib.BaseMvp.MvpPresenter;
 import com.queen.mvplib.MvpBasePresenter;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.observer.LoadingObserver;
-import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieDetailContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.model.RealmDoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieDetail;
 
 import io.reactivex.Observer;
 

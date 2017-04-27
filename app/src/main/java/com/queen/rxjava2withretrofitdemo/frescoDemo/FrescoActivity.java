@@ -37,7 +37,9 @@ public class FrescoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
 //        Uri uri = Uri.parse("https://img.gank.tv/feed/ecda22ccf05fc24537d9af1ebdadb760@1e_2o_0l_130h_278w_90q.gif");
-        Uri uri = Uri.parse("https://img.gank.tv/feed/0793bb0c00a38f38a54193a4f0e2c244@1e_2o_0l_612h_1080w_90q.gif");
+//        Uri uri = Uri.parse("https://img.gank.tv/feed/0793bb0c00a38f38a54193a4f0e2c244@1e_2o_0l_612h_1080w_90q.gif");
+        Uri uri = Uri.parse("https://imgim.gank.tv/chat/fccd0f5a5fac5efd4042f9fc45ad866b");
+
 
         DraweeController controller = Fresco.newDraweeControllerBuilder()
                 .setUri(uri)

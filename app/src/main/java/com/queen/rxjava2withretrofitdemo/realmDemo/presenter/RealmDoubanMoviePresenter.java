@@ -3,15 +3,13 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.presenter;
 import android.util.Log;
 
 import com.orhanobut.logger.Logger;
-import com.queen.mvplib.BaseMvp.MvpPresenter;
-import com.queen.mvplib.BaseMvp.MvpView;
 import com.queen.mvplib.MvpBasePresenter;
 import com.queen.rxjava2withretrofitdemo.BuildConfig;
 import com.queen.rxjava2withretrofitdemo.mvpWithRxjavaDemo.observer.LoadingObserver;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.model.RealmDoubanMovieModel;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieResult;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieResult;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 import java.util.ArrayList;
 
@@ -34,6 +32,7 @@ public class RealmDoubanMoviePresenter extends MvpBasePresenter<RealmDoubanMovie
 
     public RealmDoubanMoviePresenter() {
         realm = Realm.getDefaultInstance();
+        
     }
 
 //    public RealmDoubanMoviePresenter(RealmDoubanMovieContract.View mView) {

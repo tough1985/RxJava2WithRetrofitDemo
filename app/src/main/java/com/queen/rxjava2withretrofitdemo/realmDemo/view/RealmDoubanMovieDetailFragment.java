@@ -2,7 +2,6 @@ package com.queen.rxjava2withretrofitdemo.realmDemo.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,8 @@ import com.queen.mvplib.MvpFragment;
 import com.queen.rxjava2withretrofitdemo.R;
 import com.queen.rxjava2withretrofitdemo.realmDemo.contract.RealmDoubanMovieDetailContract;
 import com.queen.rxjava2withretrofitdemo.realmDemo.presenter.RealmDoubanMovieDetailPresenter;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieDetail;
-import com.queen.rxjava2withretrofitdemo.realmEntity.RealmDoubanMovieSubject;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieDetail;
+import com.queen.rxjava2withretrofitdemo.RealmEntityTest.RealmDoubanMovieSubject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
